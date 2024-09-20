@@ -1,4 +1,5 @@
-import mogoose, {Schema} from "mongoose";
+import mongoose, {Schema} from "mongoose";
+import bcrypt from "bcrypt"
 
 const userSchema = new Schema({
     username:{
@@ -17,7 +18,7 @@ const userSchema = new Schema({
         trim: true,
         
     },
-    fullname:{
+    fullName:{
         type:String,
         required:true,
         lowercase: true,
@@ -54,7 +55,7 @@ userSchema.methods.isPasswordCorrect = async function (password){
     return await bcrypt.compare(password, this.password)
 }
 
-userSchema.Schema.methods.generateAccessToken = function(){
+userSchema.methods.generateAccessToken = function(){
     return jwt.sign( {
         _id: this._id,
         email: this.email,
