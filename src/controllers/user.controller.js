@@ -182,7 +182,7 @@ const refreshAccessToken = asyncHandler(async(req,res) => {
 
     //verify incoming token from client
     try {
-        const decodedToken = jwt.verify(incomingRefreshToken, process.env.Re)
+        const decodedToken = jwt.verify(incomingRefreshToken, process.env.REFRESH_TOKEN_SECRET)
         //find user using the _id and its information in db
         const user = await User.findById(decodedToken?._id)
         
