@@ -32,9 +32,9 @@ router.route("/current-user").get(verifyJWT,getCurrentUser)
 router.route("/update-account").patch(verifyJWT,updateAccountDetails)
 
 router.route("/avatar").patch(verifyJWT,upload.single("avatar"), updateUserAvatar)
-router.route("/cover-image").patch(verifyJWT,upload.single("/coverImage"),updateUserCoverImage)
-router.route("/c/:username").get(verifyJWT,getUserChannelProfile)
-router.route("/hoistory").get(verifyJWT,getWatchHistory)
+router.route("/cover-image").patch(verifyJWT,upload.single("coverImage"),updateUserCoverImage)
+router.route("/c/:username").get(verifyJWT,getUserChannelProfile) //c or channel can be kept for the route , after the colon(:) we put the param from where we are getting the data in the controller
+router.route("/history").get(verifyJWT,getWatchHistory)
 
 
 export default router
